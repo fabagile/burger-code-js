@@ -1,33 +1,73 @@
-import { cssBundleHref } from "@remix-run/css-bundle";
-import type { LinksFunction } from "@remix-run/node";
+// import { cssBundleHref } from '@remix-run/css-bundle'
+import type { LinksFunction } from '@remix-run/node'
 import {
+  // Link,
   Links,
   LiveReload,
   Meta,
+  NavLink,
   Outlet,
   Scripts,
-  ScrollRestoration,
-} from "@remix-run/react";
+  ScrollRestoration
+} from '@remix-run/react'
+import Icon from './components/Icon'
+
+import styles from '~/styles/main.css'
+import { categories } from './data'
+// import  processor from
+// import styles from "~/styles.css"
 
 export const links: LinksFunction = () => [
-  ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
-];
+  { rel: 'stylesheet', href: styles },
+  {
+    rel: 'stylesheet',
+    href: 'http://fonts.googleapis.com/css?family=Holtwood+One+SC'
+  },
+  {
+    rel: 'stylesheet',
+    href: 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'
+  }
+  // ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : [
+  // ]
+  // ),
+]
 
-export default function App() {
+export default function App () {
   return (
-    <html lang="en">
+    <html lang='fr'>
       <head>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta charSet='utf-8' />
+        <meta name='viewport' content='width=device-width, initial-scale=1' />
         <Meta />
         <Links />
       </head>
       <body>
-        <Outlet />
+        <h1 className='text-logo'>
+          <Icon name='cutlery' /> Burger Code <Icon name='cutlery' />
+        </h1>
+        <div className='container'>
+          <nav>
+            <ul className='nav nav-pills'>
+              {categories.map(cat => (
+                <li
+                  key={cat.id}
+                  role='presentation'
+                  className={cat.id == '1' ? 'rounded btn-success' : ''}
+                >
+                  <NavLink to={`/produits/${cat.label}`} data-toggle='tab'>
+                    {cat.label}
+                  </NavLink>
+                </li>
+              ))}
+            </ul>
+          </nav>
+          <br />
+          <Outlet />
+        </div>
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
       </body>
     </html>
-  );
+  )
 }
