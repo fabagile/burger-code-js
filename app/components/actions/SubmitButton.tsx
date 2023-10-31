@@ -1,12 +1,20 @@
-import React from 'react'
+import IconButton from './IconButton'
 
-import Icon from '../Icon'
-
-const SubmitButton = ({label='Ajouter',color}:{label?:string,color?:string}) => {
+const SubmitButton = ({
+  label = 'Ajouter',
+  color
+}: {
+  label?: string
+  color?: string
+}) => {
   return (
-    <button type='submit' className={`btn btn-${label=='Ajouter'?'success':color}`}>
-      <Icon name='pencil' /> {label}
-    </button>
+    <IconButton
+      btnType='submit'
+      name='pencil'
+      color={label == 'Ajouter' ? 'success' : color}
+    >
+      {label}
+    </IconButton>
   )
 }
 

@@ -1,10 +1,8 @@
 import { useParams } from '@remix-run/react'
-import React from 'react'
+
 import { Card } from '~/components/Card'
-import { menu } from '~/data'
-// export const loader = () => {
-//   const {category} =
-// }
+import { menu } from '~/data/items'
+
 const Category = () => {
   const { category } = useParams()
   const items = menu.filter(item => item.category == category)

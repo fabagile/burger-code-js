@@ -1,7 +1,6 @@
-// import { cssBundleHref } from '@remix-run/css-bundle'
 import type { LinksFunction } from '@remix-run/node'
 import {
-  // Link,
+  Link,
   Links,
   LiveReload,
   Meta,
@@ -10,12 +9,12 @@ import {
   Scripts,
   ScrollRestoration
 } from '@remix-run/react'
-import Icon from './components/Icon'
 
 import styles from '~/styles/main.css'
-import { categories } from './data'
-// import  processor from
-// import styles from "~/styles.css"
+
+import { categories } from './data/items'
+
+import Icon from './components/Icon'
 
 export const links: LinksFunction = () => [
   { rel: 'stylesheet', href: styles },
@@ -27,9 +26,6 @@ export const links: LinksFunction = () => [
     rel: 'stylesheet',
     href: 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'
   }
-  // ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : [
-  // ]
-  // ),
 ]
 
 export default function App () {
@@ -42,20 +38,22 @@ export default function App () {
         <Links />
       </head>
       <body>
-        <h1 className='text-logo'>
-          <Icon name='cutlery' /> Burger Code <Icon name='cutlery' />
-        </h1>
+        <Link to='/'>
+          <h1 className='text-logo'>
+            <Icon name='cutlery' /> Burger Code <Icon name='cutlery' />
+          </h1>
+        </Link>
         <div className='container'>
           <nav>
             <ul className='nav nav-pills'>
               {categories.map(cat => (
                 <li
-                  key={cat.id}
+                  key={cat}
                   role='presentation'
-                  className={cat.id == '1' ? 'rounded btn-success' : ''}
+                  className={cat == '1' ? 'rounded btn-success' : ''}
                 >
-                  <NavLink to={`/produits/${cat.label}`} data-toggle='tab'>
-                    {cat.label}
+                  <NavLink to={`/produits/${cat}`} data-toggle='tab'>
+                    {cat}
                   </NavLink>
                 </li>
               ))}

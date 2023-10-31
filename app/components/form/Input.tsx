@@ -3,14 +3,14 @@ import React from 'react'
 const Input = ({
   label,
   value,
-  entry,
-  setEntry,
+  entry='',
+  // setEntry,
   inputType = 'text'
 }: {
   label: string
   value: string
-  entry: string
-  setEntry: any
+  entry?: string
+  // setEntry: any
   inputType?: string
 }) => {
   return (
@@ -23,8 +23,8 @@ const Input = ({
           id={value}
           name={value}
           placeholder={label}
-          onChange={setEntry}
-          value={entry}
+          // onChange={setEntry}
+          defaultValue={entry}
         />
         <span className='help-inline'>{/* <?php echo $nameError;?> */}</span>
       </div>

@@ -1,14 +1,10 @@
-import React from 'react'
+import IconButton from './IconButton'
 
-import { Link } from '@remix-run/react'
-
-import Icon from '../Icon'
-
-const BackButton = ({label='Retour'}:{label?:string}) => {
+const BackButton = ({ label = 'Retour' }: { label?: string }) => {
   return (
-    <Link className='btn btn-primary' to='/admin'>
-      <Icon name='arrow-left' /> {label}
-    </Link>
+    <IconButton color='primary' to='/admin' name='arrow-left'>
+      {label}
+    </IconButton>
   )
 }
 

@@ -33,6 +33,15 @@ body {
   background-color: #eee;
   text-shadow: 1px 1px 1px #f26837;
 }
+.nav a,
+.nav a:focus,
+.nav a:hover {
+  transition: all 250ms ease-in-out 100ms;
+  -webkit-transition: all 250ms ease-in-out 100ms;
+  -moz-transition: all 250ms ease-in-out 100ms;
+  -ms-transition: all 250ms ease-in-out 100ms;
+  -o-transition: all 250ms ease-in-out 100ms;
+}
 .nav-pills > li.active > a,
 .nav-pills > li.active > a:focus,
 .nav-pills > li.active > a:hover {

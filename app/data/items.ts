@@ -20,14 +20,7 @@
 // const chickenBurger = new Burger("Chicken", [chicken, tomato, salad, mayonnaise])
 // const fishBurger = new Burger("Fish", [fish, salad, mayonnaise, gherkin])
 // const doubleSteakBurger = new Burger("Double Steak", [doubleBurger, salad, mayonnaise, gherkin])
-export type Dish = {
-  id: string
-  meal: string
-  description: string
-  price: number 
-  image: string
-  category: string
-}
+
 
 const menu = [
   {
@@ -302,20 +295,22 @@ const menu = [
   }
 ]
 
-export const categories = [
-  { id: '1', label: 'menus', isActive: true },
-  { id: '2', label: 'burgers' },
-  { id: '3', label: 'snacks' },
-  { id: '4', label: 'salades' },
-  { id: '5', label: 'boissons' },
-  { id: '6', label: 'desserts' }
-]
+// export const categories = [
+//   { id: '1', label: 'menus', isActive: true },
+//   { id: '2', label: 'burgers' },
+//   { id: '3', label: 'snacks' },
+//   { id: '4', label: 'salades' },
+//   { id: '5', label: 'boissons' },
+//   { id: '6', label: 'desserts' }
+// ]
 
 // menu.map(item=> item.id = item.id.toString())
 
 export { menu }
 
-export const getMenu = async () => await menu
-export const getDish = async (val: string)  =>
-  await menu.find(item => item.id == val)
-// export const updateDish = async ()
+export const categories = menu.reduce(
+  (acc: string[], { category }: { category: string }) =>
+    !acc.includes(category) ? acc.concat(category) : acc,
+  []
+)
+

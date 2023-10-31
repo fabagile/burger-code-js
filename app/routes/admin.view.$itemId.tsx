@@ -1,14 +1,10 @@
 import { Form, useLoaderData } from '@remix-run/react'
-import type { LoaderFunctionArgs } from '@remix-run/node'
-import { json } from '@remix-run/node'
-
-import React from 'react'
+import { json, type LoaderFunctionArgs } from '@remix-run/node'
 
 import invariant from 'tiny-invariant'
 
-import { getDish } from '~/data'
+import { getDish } from '~/data/utils'
 
-// import Icon from '~/components/Icon'
 import Thumbnail from '~/components/Thumbnail'
 import BackButton from '~/components/actions/BackButton'
 
@@ -30,7 +26,7 @@ const ViewItem = () => {
     <>
       <div className='col-sm-6'>
         <h1>
-          <strong>Voir un produit</strong>
+          <strong>Détail {item.meal}</strong>
         </h1>
         <br />
         <Form>

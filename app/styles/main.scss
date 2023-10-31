@@ -19,7 +19,7 @@ body {
 }
 .nav {
   margin-bottom: 40px;
-  // background-color: rgba(238, 238, 238, 0.2);
+
   > li {
     > a {
       color: rgb(238, 238, 238);
@@ -33,11 +33,15 @@ body {
       }
     }
   }
-  // .nav > li > a:focus,
-  // .nav > li > a:hover {
-  // }
-  // .nav > li > a {
-  // }
+  a,
+  a:focus,
+  a:hover {
+    transition: all 250ms ease-in-out 100ms;
+    -webkit-transition: all 250ms ease-in-out 100ms;
+    -moz-transition: all 250ms ease-in-out 100ms;
+    -ms-transition: all 250ms ease-in-out 100ms;
+    -o-transition: all 250ms ease-in-out 100ms;
+  }
   &-pills {
     > li.active > {
       a,
@@ -48,10 +52,6 @@ body {
     }
   }
 }
-// .nav-pills > li.active > a,
-// .nav-pills > li.active > a:focus,
-// .nav-pills > li.active > a:hover {
-// }
 .thumbnail img {
   background: #ffd301;
 }

@@ -1,8 +1,6 @@
 import type { MetaFunction } from '@remix-run/node'
-// import Icon from './Icon'
-import { Link } from '@remix-run/react'
-import Icon from '~/components/Icon'
-import { menu } from '~/data'
+import IconButton from '~/components/actions/IconButton'
+import { menu } from '~/data/items'
 
 export const meta: MetaFunction = () => {
   return [
@@ -16,11 +14,13 @@ export default function AdminIndex () {
     <>
       <h2>
         <strong>Liste des produits </strong>
-        <Link to='/admin/insert' className='btn btn-success btn-lg'>
-          <Icon name='plus' /> Ajouter
-        </Link>
+        <IconButton to='/admin/insert' color='success' size='lg' name='plus'>
+          Ajouter
+        </IconButton>
+        {/* <Link to= className='btn btn-success btn-lg'>
+        </Link> */}
       </h2>
-      <table className='table table-striped'>
+      <table className='table table-striped table-responsive'>
         <thead>
           <tr>
             <th className='text-center'>Nom</th>
@@ -39,27 +39,26 @@ export default function AdminIndex () {
                 <td>{item.price.toFixed(2)}</td>
                 <td>{item.category}</td>
                 <td>
-                  <Link
-                    className='btn btn-default'
-                    title='Voir'
-                    to={`/admin/view/${item.id}`}
-                  >
-                    <Icon name='eye-open' />
-                  </Link>{' '}
-                  <Link
-                    className='btn btn-primary'
-                    title='Modifier'
-                    to={`/admin/update/${item.id}`}
-                  >
-                    <Icon name='pencil' />
-                  </Link>{' '}
-                  <Link
-                    className='btn btn-danger'
-                    title='Supprimer'
-                    to={`/admin/delete/${item.id}`}
-                  >
-                    <Icon name='remove' />
-                  </Link>
+                  <div className='btn-group btn-group-sm'>
+                    <IconButton
+                      color='primary'
+                      title='Voir'
+                      to={`/admin/view/${item.id}`}
+                      name='eye-open'
+                    />
+                    <IconButton
+                      color='warning'
+                      title='Modifier'
+                      to={`/admin/update/${item.id}`}
+                      name='pencil'
+                    />
+                    <IconButton
+                      color='danger'
+                      title='Supprimer'
+                      to={`/admin/delete/${item.id}`}
+                      name='erase'
+                    />
+                  </div>
                 </td>
               </tr>
             </>
