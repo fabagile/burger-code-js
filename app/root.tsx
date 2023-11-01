@@ -1,10 +1,10 @@
 import type { LinksFunction } from '@remix-run/node'
 import {
-  Link,
+  // Link,
   Links,
   LiveReload,
   Meta,
-  NavLink,
+  // NavLink,
   Outlet,
   Scripts,
   ScrollRestoration
@@ -12,9 +12,10 @@ import {
 
 import styles from '~/styles/main.css'
 
-import { categories } from './data/items'
+// import { categories } from './data/items'
 
 import Icon from './components/Icon'
+import Navigation from './components/Navigation'
 
 export const links: LinksFunction = () => [
   { rel: 'stylesheet', href: styles },
@@ -38,27 +39,13 @@ export default function App () {
         <Links />
       </head>
       <body>
-        <Link to='/'>
-          <h1 className='text-logo'>
-            <Icon name='cutlery' /> Burger Code <Icon name='cutlery' />
-          </h1>
-        </Link>
+        
+        <h1 className='text-logo'>
+          <Icon name='cutlery' /> Burger Code <Icon name='cutlery' />
+        </h1>
+        
         <div className='container'>
-          <nav>
-            <ul className='nav nav-pills'>
-              {categories.map(cat => (
-                <li
-                  key={cat}
-                  role='presentation'
-                  className={cat == '1' ? 'rounded btn-success' : ''}
-                >
-                  <NavLink to={`/produits/${cat}`} data-toggle='tab'>
-                    {cat}
-                  </NavLink>
-                </li>
-              ))}
-            </ul>
-          </nav>
+          <Navigation />
           <br />
           <Outlet />
         </div>

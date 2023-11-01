@@ -6,3 +6,6 @@ export type Dish = {
   image: string
   category?: string
 }
+export interface Product extends Dish {
+  number: number
+}
