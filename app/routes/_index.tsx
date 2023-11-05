@@ -4,6 +4,7 @@ import { useLoaderData } from '@remix-run/react'
 
 import { Card } from '~/components/Card'
 import { getMenu } from '~/data/utils'
+import UserLayout from '~/templates/_UserLayout'
 
 export const meta: MetaFunction = () => {
   return [
@@ -24,15 +25,14 @@ const Index = () => {
   // }
 
   return (
-    <div className='tab-content'>
-      <div className='row'>
-        {/* <Link to='produits/menus' >consulter le menu</Link> */}
-        {menu.map(
-          item =>
-            item.category === 'menus' && <Card key={item.id} item={item} />
-        )}
-      </div>
-    </div>
+    <UserLayout>
+      {menu.map(
+        item => item.category === 'menus' && <Card key={item.id} item={item} />
+      )}
+      {/* <Link to='produits/menus' >consulter le menu</Link> */}
+      {/* </div>
+</div> */}
+    </UserLayout>
   )
 }
 

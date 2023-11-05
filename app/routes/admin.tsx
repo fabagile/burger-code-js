@@ -1,5 +1,6 @@
 import type { MetaFunction } from '@remix-run/node'
 import { Outlet } from '@remix-run/react'
+import AdminLayout from '~/templates/_AdminLayout'
 
 export const meta: MetaFunction = () => {
   return [
@@ -10,10 +11,8 @@ export const meta: MetaFunction = () => {
 
 export default function AdminRoute () {
   return (
-    <div className='container admin'>
-      <div className='row'>
-        <Outlet />
-      </div>
-    </div>
+    <AdminLayout>
+      <Outlet />
+    </AdminLayout>
   )
 }
